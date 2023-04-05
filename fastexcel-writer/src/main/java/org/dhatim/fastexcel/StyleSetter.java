@@ -98,6 +98,9 @@ public class StyleSetter {
      * Text rotation in degrees
      */
     private int rotation;
+
+    private int indent;
+
     /**
      * Border.
      */
@@ -286,6 +289,11 @@ public class StyleSetter {
         return this;
     }
 
+    public StyleSetter indent(int indent) {
+        this.indent = indent;
+        return this;
+    }
+
     /**
      * Set cell border element.
      *
@@ -414,8 +422,8 @@ public class StyleSetter {
      */
     public void set() {
         Alignment alignment;
-        if (horizontalAlignment != null || verticalAlignment != null || wrapText || rotation != 0) {
-            alignment = new Alignment(horizontalAlignment, verticalAlignment, wrapText, rotation);
+        if (horizontalAlignment != null || verticalAlignment != null || wrapText || rotation != 0 || indent != 0) {
+            alignment = new Alignment(horizontalAlignment, verticalAlignment, wrapText, rotation, indent);
         } else {
             alignment = null;
         }
@@ -465,8 +473,8 @@ public class StyleSetter {
      */
     public void set(ConditionalFormattingRule conditionalFormattingRule) {
         Alignment alignment = null;
-        if (horizontalAlignment != null || verticalAlignment != null || wrapText || rotation != 0) {
-            alignment = new Alignment(horizontalAlignment, verticalAlignment, wrapText, rotation);
+        if (horizontalAlignment != null || verticalAlignment != null || wrapText || rotation != 0 || indent != 0) {
+            alignment = new Alignment(horizontalAlignment, verticalAlignment, wrapText, rotation, indent);
         }
         Font font = null;
         if (bold || italic || underlined || fontColor != null || fontName != null || fontSize != null) {
